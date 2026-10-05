@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GDPS - Portal Sistem</title>
     <style>
-        body, html {
-            margin: 0; padding: 0; height: 100%; overflow: hidden;
-        }
-        iframe {
-            width: 100vw; height: 100vh; border: none;
-        }
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        iframe { width: 100vw; height: 100vh; border: none; }
     </style>
 </head>
 <body>
-    <!-- Masukkan link Google Script Anda di sini -->
-    <iframe src="https://script.google.com/macros/s/AKfycbyHhM--ueTPeVLmpWMwlrfTdXtfmyQB1iRRUri_CntDuXavwQIoO8NFvXm0Tu1SZfi8hw/exec"></iframe>
+    <iframe id="gasFrame" src=""></iframe>
+    
+    <script>
+        // 1. Ambil parameter halaman dari URL GitHub Anda (misal: ?v=dashboard)
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.get('v') || 'Index'; // Default ke halaman Index
+        
+        // 2. Link eksekusi Google Script Anda
+        const gasUrl = "https://script.google.com/macros/s/AKfycbyHhM--ueTPeVLmpWMwlrfTdXtfmyQB1iRRUri_CntDuXavwQIoO8NFvXm0Tu1SZfi8hw/exec";
+        
+        // 3. Masukkan link dan parameter ke dalam iframe
+        document.getElementById('gasFrame').src = gasUrl + "?v=" + page;
+    </script>
 </body>
 </html>
